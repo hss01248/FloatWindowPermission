@@ -13,6 +13,12 @@ more details about the models that have been adapted(thanks [ruanqin0706](https:
 
 
 
+# attention
+
+support api version below 23.  
+
+if api version >= 23, please use RxPermission and so on .
+
 # useage
 
 > ask for permission :(contains the  checkPermission logic)
@@ -83,6 +89,10 @@ lastest release:https://github.com/hss01248/FloatWindowPermission/releases
 
 
 
+
+
+
+# the read me of origin project: 
 
 ##6.0/6.0+**##
 

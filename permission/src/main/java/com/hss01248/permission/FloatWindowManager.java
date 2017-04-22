@@ -8,8 +8,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
@@ -23,7 +21,6 @@ import com.hss01248.permission.rom.MiuiUtils;
 import com.hss01248.permission.rom.QikuUtils;
 import com.hss01248.permission.rom.RomUtils;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -128,8 +125,10 @@ public class FloatWindowManager {
             } else if (RomUtils.checkIs360Rom()) {
                 ROM360PermissionApply(context);
             }
+        }else {
+           // commonROMPermissionApply(context);
         }
-        commonROMPermissionApply(context);
+
     }
 
     private void ROM360PermissionApply(final Context context) {
@@ -192,8 +191,8 @@ public class FloatWindowManager {
         if (RomUtils.checkIsMeizuRom()) {
             meizuROMPermissionApply(context);
         } else {
-            if (Build.VERSION.SDK_INT >= 23) {
-                showConfirmDialog(context, new OnConfirmResult() {
+            if (Build.VERSION.SDK_INT >= 23) {//todo 这里有bug,申请的权限只有一次有效
+               /* showConfirmDialog(context, new OnConfirmResult() {
                     @Override
                     public void confirmResult(boolean confirm) {
                         if (confirm) {
@@ -213,7 +212,7 @@ public class FloatWindowManager {
                             //需要做统计效果
                         }
                     }
-                });
+                });*/
             }
         }
     }
