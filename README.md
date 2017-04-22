@@ -10,7 +10,82 @@ from now on，the models below android M that have been adapted are :
 <ul><li>xiaomi:v5,v6,v7,v8</li><li>huawei:partial</li><li>meizu:partial</li><li>360:partial</li><li>others:phones like samsung,sony or other model can directly show the float window, so there is no need to adapt,but if you find one that can not,contact me via my email(zhao_zepeng@hotmail.com) or leave a message on my blog i mentioned above,thanks</li></ul>
 
 more details about the models that have been adapted(thanks [ruanqin0706](https://github.com/ruanqin0706) for help):</br>
-##**6.0/6.0+**##
+
+
+
+# useage
+
+> ask for permission :(contains the  checkPermission logic)
+
+```
+FloatWindowManager.getInstance().askPermission(this);
+```
+
+> checkPermission
+
+```
+public boolean checkPermission(Context context)
+```
+
+## show a view as TYPE_TOAST:
+
+> if has permission ,show the view ,if not, call askPermission
+
+```
+public Dialog showAsTypeToast(View view)
+```
+
+the return type Dialog is just a wrapper of  WindowManager  ,with a convenient api . to dismiss it ,just call 
+
+           if(dialog !=null && dialog.isShowing()){
+               dialog.dismiss();
+           }
+ if you want to response to the backpressed event of activity ,you can overide in activity like this:
+
+```
+ @Override
+    public void onBackPressed() {
+        if(dialog !=null && dialog.isShowing()){
+            dialog.dismiss();
+        }else {
+            super.onBackPressed();
+        }
+    }
+```
+
+
+
+## gradle 
+
+**Step 1.** Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+
+```
+    allprojects {
+        repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        }
+    }
+```
+
+**Step 2.** Add the dependency
+
+```
+    dependencies {
+            compile 'com.github.hss01248:FloatWindowPermission:lastest release'
+    }
+```
+
+lastest release:https://github.com/hss01248/FloatWindowPermission/releases
+
+
+
+
+
+##6.0/6.0+**##
+
 most models are OK with this way of adaption except meizu:
 ![这里写图片描述](http://img.blog.csdn.net/20161120151434066)
 ![这里写图片描述](http://img.blog.csdn.net/20161120151457025)
